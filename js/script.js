@@ -4,9 +4,15 @@
 /* global $ */
 
 $("#search-button").click(function(){
-    $.ajax({url:"https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC", success: function(result){
-        $("body").html(images.original_still);
-    }})
+    var input= $("#search-term").val();
+    $.ajax({
+    url: "https://api.giphy.com/v1/gifs/search?q=" + input + "&rating=pg&api_key=dc6zaTOxFJmzC",
+    method: "GET",
+  success: function(result) {
+    $("#image").append("<img src='" + result + "'>")
+  },
+});
+
 
 
 });
