@@ -8,8 +8,10 @@ $("#search-button").click(function(){
     $.ajax({
     url: "https://api.giphy.com/v1/gifs/search?q=" + input + "&rating=pg&api_key=dc6zaTOxFJmzC",
     method: "GET",
-  success: function(result) {
-    $("#image").append("<img src='" + result + "'>")
+  success: function(response) {
+    var number=Math.floor(Math.random()*response.data.length);
+    var pic_url = response.data[number].images.original.url;
+    $("#image").append("<img src=" + pic_url + ">")
   },
 });
 
